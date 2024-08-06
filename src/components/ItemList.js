@@ -42,25 +42,29 @@ const ItemList = () => {
 
   return (
     <div>
-      <h1>Items</h1>
-      <button onClick={handleAddNewItem}>Add Item</button>
-      <ul>
-        {items.map(item => (
-          <li key={item._id}>
-            <span onClick={() => handleEditItem(item._id)}>{item.name}</span>
-            <button onClick={() => handleDelete(item._id)}>Delete</button>
-          </li>
-        ))}
-      </ul>
-      {showModal && (
-        <ItemForm 
-          isNew={isNew} 
-          showModal={showModal} 
-          setShowModal={setShowModal} 
-          itemIdToEdit={itemIdToEdit} 
-          onItemUpdated={handleItemUpdated}
-        />
-      )}
+      <div className="add-item-container"> 
+        <h1>Items</h1>
+        <button onClick={handleAddNewItem}>Add Item</button>
+      </div>
+      <div className="items-container">
+        <ul>
+          {items.map(item => (
+            <li key={item._id}>
+              <span onClick={() => handleEditItem(item._id)}>{item.name}</span>
+              <button onClick={() => handleDelete(item._id)}>Delete</button>
+            </li>
+          ))}
+        </ul>
+        {showModal && (
+          <ItemForm 
+            isNew={isNew} 
+            showModal={showModal} 
+            setShowModal={setShowModal} 
+            itemIdToEdit={itemIdToEdit} 
+            onItemUpdated={handleItemUpdated}
+          />
+        )}
+      </div>
     </div>
   );
 };

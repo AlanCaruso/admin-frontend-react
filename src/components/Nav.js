@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './Nav.css';
 
-const Nav = () => {
+const Nav = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleNav = () => {
@@ -24,6 +24,9 @@ const Nav = () => {
           </li>
           <li>
             <Link to="/items" onClick={toggleNav}>Items</Link>
+          </li>
+          <li>
+            <button onClick={onLogout}>Logout</button>
           </li>
         </ul>
       </div>

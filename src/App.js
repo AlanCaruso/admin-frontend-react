@@ -15,13 +15,16 @@ const App = () => {
     setLoggedIn(true);
     setUsername(username);
   }
-
+  const handleLogout = () => {
+    setLoggedIn(false);
+    setUsername('');
+  }
   return (
     <Router>
       <div>
         {isLoggedIn ? (
           <>
-            <Nav />
+            <Nav onLogout={handleLogout} />
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
