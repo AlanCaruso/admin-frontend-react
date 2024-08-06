@@ -9,9 +9,9 @@ const Login = () => {
     const handleLogin = (e) => {
         e.preventDefault();
         if (username === 'admin' && password === 'password') {
-            alert("login exitoso")
+            alert("successful login")
         } else {
-            alert('credenciales invalidas')
+            alert('invalid credentials')
         }
     }
 
