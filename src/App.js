@@ -8,6 +8,14 @@ import Login from './components/Login';
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
+  const [username, setUsername] = useState('');
+
+
+  const handleLogin = (username) => {
+    setLoggedIn(true);
+    setUsername(username);
+  }
+
   return (
     <Router>
       <div>
@@ -22,7 +30,7 @@ const App = () => {
           </>
         ) : (
           <>
-            <Login />
+            <Login onLogin={handleLogin} />
           </>
         )}
 

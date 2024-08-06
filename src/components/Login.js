@@ -2,16 +2,16 @@
 import React, { useState } from 'react';
 import './Login.css';
 
-const Login = () => {
+const Login = ({ onLogin }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('')
 
     const handleLogin = (e) => {
         e.preventDefault();
         if (username === 'admin' && password === 'password') {
-            alert("successful login")
+            onLogin(username);
         } else {
-            alert('invalid credentials')
+            alert('invalid credentials');
         }
     }
 
