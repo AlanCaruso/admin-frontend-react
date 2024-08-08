@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Nav.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Nav.css";
 
 const Nav = ({ onLogout }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,19 +14,27 @@ const Nav = ({ onLogout }) => {
       <div className="nav-logo">
         <Link to="/">Admin</Link>
       </div>
-      <div className={`nav-links ${isOpen ? 'open' : ''}`}>
+      <div className={`nav-links ${isOpen ? "open" : ""}`}>
         <ul>
           <li>
-            <Link to="/" onClick={toggleNav}>Home</Link>
+            <Link to="/" onClick={toggleNav}>
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about" onClick={toggleNav}>About</Link>
+            <Link to="/about" onClick={toggleNav}>
+              About
+            </Link>
           </li>
           <li>
-            <Link to="/items" onClick={toggleNav}>Items</Link>
+            <Link to="/items" onClick={toggleNav}>
+              Items
+            </Link>
           </li>
           <li>
-            <button onClick={onLogout}>Logout</button>
+            <button className="btn logout-item" onClick={onLogout}>
+              Logout
+            </button>
           </li>
         </ul>
       </div>

@@ -1,19 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import './ItemForm.css'; // Archivo de estilos para el modal
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import "./ItemForm.css";
 
-const ItemForm = ({ isNew, showModal, setShowModal, itemIdToEdit, onItemUpdated }) => {
-  const API = 'http://192.168.1.10:5000';
+const ItemForm = ({
+  isNew,
+  showModal,
+  setShowModal,
+  itemIdToEdit,
+  onItemUpdated,
+}) => {
+  const API = "http://192.168.1.10:5000";
   const [formData, setFormData] = useState({
-    name: '',
-    description: ''
+    name: "",
+    description: "",
   });
 
   useEffect(() => {
     if (!isNew && itemIdToEdit) {
-      axios.get(`${API}/api/items/${itemIdToEdit}`)
-        .then(response => setFormData(response.data))
-        .catch(error => console.error('Error fetching item:', error));
+      axios
+        .get(`${API}/api/items/${itemIdToEdit}`)
+        .then((response) => setFormData(response.data))
+        .catch((error) => console.error("Error fetching item:", error));
     }
   }, [isNew, itemIdToEdit]);
 
@@ -27,7 +34,7 @@ const ItemForm = ({ isNew, showModal, setShowModal, itemIdToEdit, onItemUpdated 
       }
       onItemUpdated(); // Notificar a la lista de ítems que se ha actualizado un ítem
     } catch (error) {
-      console.error('Error submitting form:', error);
+      console.error("Error submitting form:", error);
     }
   };
 
@@ -36,22 +43,35 @@ const ItemForm = ({ isNew, showModal, setShowModal, itemIdToEdit, onItemUpdated 
   };
 
   return (
-    <div className={`modal ${showModal ? 'show' : 'hide'}`}>
+    <div className={`modal ${showModal ? "show" : "hide"}`}>
       <div className="modal-content">
-        <span className="close" onClick={() => setShowModal(false)}>&times;</span>
-        <h2>{isNew ? 'Add New Item' : 'Edit Item'}</h2>
+        <span className="close" onClick={() => setShowModal(false)}>
+          &times;
+        </span>
+        <h2>{isNew ? "Add New Item" : "Edit Item"}</h2>
         <form onSubmit={handleSubmit}>
           <label>
             Name:
-            <input type="text" name="name" value={formData.name} onChange={handleChange} />
+            <input
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+            />
           </label>
           <br />
           <label>
             Description:
-            <textarea name="description" value={formData.description} onChange={handleChange} />
+            <textarea
+              name="description"
+              value={formData.description}
+              onChange={handleChange}
+            />
           </label>
           <br />
-          <button type="submit">{isNew ? 'Add Item' : 'Update Item'}</button>
+          <button className="btn update-item" type="submit">
+            {isNew ? "Add Item" : "Update Item"}
+          </button>
         </form>
       </div>
     </div>

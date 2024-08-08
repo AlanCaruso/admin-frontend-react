@@ -1,24 +1,23 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Home from './components/Home';
-import About from './components/About';
-import ItemList from './components/ItemList';
-import Nav from './components/Nav';
-import Login from './components/Login';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import About from "./components/About";
+import ItemList from "./components/ItemList";
+import Nav from "./components/Nav";
+import Login from "./components/Login";
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-
+  const [username, setUsername] = useState("");
 
   const handleLogin = (username) => {
     setLoggedIn(true);
     setUsername(username);
-  }
+  };
   const handleLogout = () => {
     setLoggedIn(false);
-    setUsername('');
-  }
+    setUsername("");
+  };
   return (
     <Router>
       <div>
@@ -36,9 +35,8 @@ const App = () => {
             <Login onLogin={handleLogin} />
           </>
         )}
-
       </div>
-    </Router >
+    </Router>
   );
 };
 
