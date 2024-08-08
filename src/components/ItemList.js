@@ -55,12 +55,17 @@ const ItemList = () => {
         <ul>
           {items.map((item) => (
             <li key={item._id}>
+              <button
+                className="btn edit-item"
+                onClick={() => handleEditItem(item._id)}
+              >
+                <i className="fas fa-edit"></i>
+              </button>
               <span onClick={() => handleEditItem(item._id)}>{item.name}</span>
               <button
                 className="btn delete-item"
                 onClick={() => handleDelete(item._id)}
               >
-                {" "}
                 <i className="fas fa-trash-alt"></i> Delete
               </button>
             </li>
