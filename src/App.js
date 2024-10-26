@@ -1,5 +1,10 @@
 import React, { useState } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+  Navigate,
+} from "react-router-dom";
 import Home from "./components/Home";
 import About from "./components/About";
 import ItemList from "./components/ItemList";
@@ -21,20 +26,31 @@ const App = () => {
   return (
     <Router>
       <div>
-        {isLoggedIn ? (
-          <>
-            <Nav onLogout={handleLogout} />
-            <Routes>
-              <Route path="/" element={<Home />} />
+        {/* Show navigation bar */}
+        <Nav
+          onLogin={isLoggedIn}
+          onLogout={handleLogout}
+          isAuthenticated={isLoggedIn}
+        />
+        {/* Accesible content routes */}
+        <Routes>
+          <Route path="/" element={<ItemList />} />
+          {isLoggedIn ? (
+            <>
               <Route path="/about" element={<About />} />
               <Route path="/items" element={<ItemList />} />
-            </Routes>
-          </>
-        ) : (
-          <>
-            <Login onLogin={handleLogin} />
-          </>
-        )}
+              {/* Redirect to /items when logged in */}
+              <Route path="/login" element={<Navigate to="/items" />} />
+            </>
+          ) : (
+            <>
+              {/* Redirect to /login when trying to access /about while logged out */}
+              <Route path="/about" element={<Navigate to="/login" />} />
+              <Route path="/items" element={<ItemList />} />
+              <Route path="/login" element={<Login onLogin={handleLogin} />} />
+            </>
+          )}
+        </Routes>
       </div>
     </Router>
   );
