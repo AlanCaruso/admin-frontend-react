@@ -9,7 +9,6 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  cursor: pointer;
 }
 
 .nav-links ul li a:hover {
@@ -111,7 +110,6 @@ li {
 }
 .items-list-container span {
   font-size: 1em;
-  cursor: pointer;
   margin-left: 0.5em;
   flex-grow: 1;
 }

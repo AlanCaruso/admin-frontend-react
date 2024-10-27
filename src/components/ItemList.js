@@ -3,7 +3,7 @@ import { getItems, deleteItem } from "../services/itemService";
 import ItemForm from "./ItemForm";
 import "../components/style.css";
 
-const ItemList = () => {
+const ItemList = ({ isLoggedIn }) => {
   const [items, setItems] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isNew, setIsNew] = useState(true);
@@ -46,28 +46,40 @@ const ItemList = () => {
     <div className="items-container">
       <div className="add-item-container">
         <h1>Items</h1>
-        <button className="btn add-item" onClick={handleAddNewItem}>
-          {" "}
-          <i className="fas fa-plus"></i> Add Item
-        </button>
+        {isLoggedIn && (
+          <button className="btn add-item" onClick={handleAddNewItem}>
+            {" "}
+            <i className="fas fa-plus"></i> Add Item
+          </button>
+        )}
       </div>
       <div className="items-list-container">
         <ul>
           {items.map((item) => (
             <li key={item._id}>
-              <button
-                className="btn edit-item"
-                onClick={() => handleEditItem(item._id)}
-              >
-                <i className="fas fa-edit"></i>
-              </button>
-              <span onClick={() => handleEditItem(item._id)}>{item.name}</span>
-              <button
-                className="btn delete-item"
-                onClick={() => handleDelete(item._id)}
-              >
-                <i className="fas fa-trash-alt"></i> Delete
-              </button>
+              {isLoggedIn && (
+                <button
+                  className="btn edit-item"
+                  onClick={() => handleEditItem(item._id)}
+                >
+                  <i className="fas fa-edit"></i>
+                </button>
+              )}
+              {isLoggedIn ? (
+                <span onClick={() => handleEditItem(item._id)}>
+                  {item.name}
+                </span>
+              ) : (
+                <span>{item.name}</span>
+              )}
+              {isLoggedIn && (
+                <button
+                  className="btn delete-item"
+                  onClick={() => handleDelete(item._id)}
+                >
+                  <i className="fas fa-trash-alt"></i> Delete
+                </button>
+              )}
             </li>
           ))}
         </ul>

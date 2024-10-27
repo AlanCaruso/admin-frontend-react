@@ -1,5 +1,20 @@
 # Changelog
 
+## [0.2.1] - 2024-10-27
+
+### Changes
+
+Edit Access Control in `ItemList`:
+
+- Implemented conditional rendering in `ItemList` to restrict editing options.
+- Added a prop isLoggedIn to control the visibility of edit buttons, ensuring they only appear when the user is authenticated.
+- Enhanced user experience by providing clear access boundaries between authenticated and non-authenticated users.
+
+### Enhanced
+
+- Passed isLoggedIn as a prop to `ItemList` for seamless control over editing functionalities.
+- Improved routing and component interaction to ensure consistent access control across the application.
+
 ## [0.2.0] - 2024-10-25
 
 ### Added

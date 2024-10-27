@@ -34,11 +34,14 @@ const App = () => {
         />
         {/* Accesible content routes */}
         <Routes>
-          <Route path="/" element={<ItemList />} />
+          <Route path="/" element={<ItemList isLoggedIn={isLoggedIn} />} />
           {isLoggedIn ? (
             <>
               <Route path="/about" element={<About />} />
-              <Route path="/items" element={<ItemList />} />
+              <Route
+                path="/items"
+                element={<ItemList isLoggedIn={isLoggedIn} />}
+              />
               {/* Redirect to /items when logged in */}
               <Route path="/login" element={<Navigate to="/items" />} />
             </>
@@ -46,7 +49,10 @@ const App = () => {
             <>
               {/* Redirect to /login when trying to access /about while logged out */}
               <Route path="/about" element={<Navigate to="/login" />} />
-              <Route path="/items" element={<ItemList />} />
+              <Route
+                path="/items"
+                element={<ItemList isLoggedIn={isLoggedIn} />}
+              />
               <Route path="/login" element={<Login onLogin={handleLogin} />} />
             </>
           )}
