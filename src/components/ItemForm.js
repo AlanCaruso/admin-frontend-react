@@ -15,14 +15,20 @@ const ItemForm = ({
     description: "",
     category: "",
   });
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     if (!isNew && itemIdToEdit) {
       axios
         .get(`${API}/api/items/${itemIdToEdit}`)
         .then((response) => setFormData(response.data))
-        .catch((error) => console.error("Error fetching item:", error));
+        .catch((error) => console.log("Error fetching item:", error));
     }
+
+    axios
+      .get(`${API}/api/categories`)
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.log("Error fetching item:", error));
   }, [isNew, itemIdToEdit]);
 
   const handleSubmit = async (e) => {
@@ -70,15 +76,20 @@ const ItemForm = ({
             />
           </label>
           <br />
-          <label>
+          <label className="inline-field">
             Category:
-            <input
-              type="text"
+            <select
               name="category"
-              placeholder="Category"
               value={formData.category}
               onChange={handleChange}
-            />
+            >
+              <option value="">Select a category</option>
+              {categories.map((category) => (
+                <option key={category._id} value={category.name}>
+                  {category.name}
+                </option>
+              ))}
+            </select>
           </label>
           <br />
           <button className="btn update-item" type="submit">

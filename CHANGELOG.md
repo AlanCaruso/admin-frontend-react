@@ -1,6 +1,24 @@
 # Changelog
 
-## [0.2.2] - 2024-01-31
+## [0.2.3] - 2025-01-31
+
+### Added
+
+- Implemented a `Category` model in the backend to store and manage item categories.
+- Created new API routes to fetch and create categories.
+
+### Changed
+
+- Replaced the category input field in `ItemForm` with a dropdown selector.
+- Categories are now dynamically fetched from the backend.
+- Items can now be assigned to existing categories when created or updated.
+
+### Enhanced
+
+- Improved user experience by preventing manual category entry and ensuring data consistency.
+- Backend now supports category management, laying the foundation for further enhancements.
+
+## [0.2.2] - 2025-01-30
 
 ### Added
 
