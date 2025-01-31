@@ -5,8 +5,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Home from "./components/Home";
-import About from "./components/About";
+import Categories from "./components/Categories";
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
@@ -37,7 +36,7 @@ const App = () => {
           <Route path="/" element={<ItemList isLoggedIn={isLoggedIn} />} />
           {isLoggedIn ? (
             <>
-              <Route path="/about" element={<About />} />
+              <Route path="/categories" element={<Categories />} />
               <Route
                 path="/items"
                 element={<ItemList isLoggedIn={isLoggedIn} />}
@@ -47,8 +46,7 @@ const App = () => {
             </>
           ) : (
             <>
-              {/* Redirect to /login when trying to access /about while logged out */}
-              <Route path="/about" element={<Navigate to="/login" />} />
+              <Route path="/categories" element={<Navigate to="/login" />} />
               <Route
                 path="/items"
                 element={<ItemList isLoggedIn={isLoggedIn} />}

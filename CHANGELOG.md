@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.2.2] - 2024-01-31
+
+### Added
+
+- Introduced a `category` field in `ItemForm` to allow users to categorize items.
+- Updated API interactions in `ItemForm` to support the new `category` field.
+- Adjusted the UI to include an input field for category selection.
+
+### Changed
+
+- Renamed the `About` route to `Categories`. This will be used to manage item categories.
+- Updated navigation links and routing to reflect the change.
+
+### Enhanced
+
+- Improved item management by allowing categorization, enabling better organization and filtering in future updates.
+
 ## [0.2.1] - 2024-10-27
 
 ### Changes

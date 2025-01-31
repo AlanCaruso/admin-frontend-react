@@ -54,35 +54,33 @@ const ItemList = ({ isLoggedIn }) => {
         )}
       </div>
       <div className="items-list-container">
-        <ul>
+        <ul className="items-list">
           {items.map((item) => (
-            <li key={item._id}>
-              {isLoggedIn && (
-                <button
-                  className="btn edit-item"
-                  onClick={() => handleEditItem(item._id)}
-                >
-                  <i className="fas fa-edit"></i>
-                </button>
-              )}
-              {isLoggedIn ? (
-                <span onClick={() => handleEditItem(item._id)}>
-                  {item.name}
-                </span>
-              ) : (
+            <li key={item._id} className="item">
+              <div className="item-content">
                 <span>{item.name}</span>
-              )}
+                <p className="item-category">{item.category}</p>
+              </div>
               {isLoggedIn && (
-                <button
-                  className="btn delete-item"
-                  onClick={() => handleDelete(item._id)}
-                >
-                  <i className="fas fa-trash-alt"></i> Delete
-                </button>
+                <div className="item-actions">
+                  <button
+                    className="btn edit-item"
+                    onClick={() => handleEditItem(item._id)}
+                  >
+                    <i className="fas fa-edit"></i>
+                  </button>
+                  <button
+                    className="btn delete-item"
+                    onClick={() => handleDelete(item._id)}
+                  >
+                    <i className="fas fa-trash-alt"></i>
+                  </button>
+                </div>
               )}
             </li>
           ))}
         </ul>
+
         {showModal && (
           <ItemForm
             isNew={isNew}

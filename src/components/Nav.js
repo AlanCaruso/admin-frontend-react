@@ -17,8 +17,8 @@ const Nav = ({ onLogout, isAuthenticated }) => {
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
         <ul>
           <li>
-            <Link to="/about" onClick={toggleNav}>
-              About
+            <Link to="/categories" onClick={toggleNav}>
+              Categories
             </Link>
           </li>
           <li>

@@ -13,6 +13,7 @@ const ItemForm = ({
   const [formData, setFormData] = useState({
     name: "",
     description: "",
+    category: "",
   });
 
   useEffect(() => {
@@ -65,6 +66,17 @@ const ItemForm = ({
             <textarea
               name="description"
               value={formData.description}
+              onChange={handleChange}
+            />
+          </label>
+          <br />
+          <label>
+            Category:
+            <input
+              type="text"
+              name="category"
+              placeholder="Category"
+              value={formData.category}
               onChange={handleChange}
             />
           </label>
