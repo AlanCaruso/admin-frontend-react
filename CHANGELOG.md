@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.2.4] - 2025-02-01
+
+### Changed
+
+- Updated UI design to prepare for light/dark theme toggle.
+- Modified header, text, and login component to ensure a uniform light theme.
+- Adjusted spacing and fixed minor layout inconsistencies for better visual alignment.
+- Improved mobile navigation layout for better responsiveness.
+
 ## [0.2.3] - 2025-01-31
 
 ### Added

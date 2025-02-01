@@ -12,7 +12,7 @@ const Nav = ({ onLogout, isAuthenticated }) => {
   return (
     <nav className="navbar">
       <div className="nav-logo">
-        <Link to="/">Admin</Link>
+        {isAuthenticated ? <Link to="/">Admin</Link> : <Link to="/">User</Link>}
       </div>
       <div className={`nav-links ${isOpen ? "open" : ""}`}>
         <ul>
