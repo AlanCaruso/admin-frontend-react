@@ -13,12 +13,13 @@ const Categories = () => {
   });
   return (
     <div className="about-page">
-      {isLoggedIn && (
+      {/* Create New Category button in production */}
+      {/* {isLoggedIn && (
         <button className="btn add-item">
           {" "}
           <i className="fas fa-plus"></i> Add New Category
         </button>
-      )}
+      )} */}
       <h2>Available Categories:</h2>
       {categories.map((category) => (
         <p key={category._id}>{category.name}</p>
