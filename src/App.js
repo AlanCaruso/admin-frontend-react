@@ -9,6 +9,7 @@ import Categories from "./components/Categories";
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
+import "./App.css";
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -24,7 +25,7 @@ const App = () => {
   };
   return (
     <Router>
-      <div>
+      <div className="dark-mode">
         {/* Show navigation bar */}
         <Nav
           onLogin={isLoggedIn}
