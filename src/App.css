@@ -1,10 +1,45 @@
 /* Light Mode (default) */
-body {
-  background-color: white;
-  color: rgba(0, 0, 0, 0.9);
+:root {
+  --bg-color: #efefef;
+  --text-color: black;
+  --button-bg: #4caf50;
+  --button-text: white;
+  --card-bg: #fafeff;
+  --item-bg: #fafeff;
 }
+
 /* Dark Mode */
 .dark-mode {
-  background-color: #121212;
-  color: black;
+  --bg-color: #232429;
+  --text-color: #fafeff;
+  --button-bg: #807dfe;
+  --button-text: #fafeff;
+  --card-bg: #343843;
+  --item-bg: #2a2d36;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+}
+
+.items-container {
+  max-width: 800px;
+  margin: 2em auto;
+  padding: 1em;
+  background-color: var(--card-bg);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--item-bg);
+  padding: 15px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }

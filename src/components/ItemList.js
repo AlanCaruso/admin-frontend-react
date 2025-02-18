@@ -67,7 +67,7 @@ const ItemList = ({ isLoggedIn }) => {
                     className="btn edit-item"
                     onClick={() => handleEditItem(item._id)}
                   >
-                    <i className="fas fa-edit"></i>
+                    <i class="far fa-edit"></i>
                   </button>
                   <button
                     className="btn delete-item"

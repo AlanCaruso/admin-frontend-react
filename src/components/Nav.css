@@ -3,12 +3,12 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #f8f9fa;
-  color: white;
+  background-color: var(--card-bg);
+  color: var(--text-color);
 }
 
 .nav-logo a {
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--text-color);
   text-decoration: none;
   font-size: 1.5rem;
   font-weight: bold;
@@ -16,6 +16,26 @@
 a:hover {
   transform: translateY(-1px);
   transition: filter 0.3s ease, transform 0.3s ease;
+}
+.nav-menu {
+  display: flex;
+  align-items: center;
+  width: 678px;
+}
+.nav-menu ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+.nav-menu ul li {
+  margin: 0 1rem;
+}
+
+.nav-menu ul li a {
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 1rem;
 }
 .nav-links {
   display: flex;
@@ -34,7 +54,7 @@ a:hover {
 }
 
 .nav-links ul li a {
-  color: rgba(0, 0, 0, 0.9);
+  color: var(--text-color);
   text-decoration: none;
   font-size: 1rem;
 }
@@ -44,7 +64,20 @@ a:hover {
   font-size: 2rem;
   cursor: pointer;
 }
+.theme-toggle {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: 0.3s;
+  border-radius: 5px;
+  font-family: "Poppins", sans-serif;
+}
 
+.theme-toggle:hover {
+  background-color: #555;
+}
 @media (max-width: 768px) {
   .nav-links {
     display: none;

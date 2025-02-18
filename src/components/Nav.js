@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import ThemeToggle from "./ThemeToggle";
 import "./Nav.css";
 
 const Nav = ({ onLogout, isAuthenticated }) => {
@@ -14,7 +15,7 @@ const Nav = ({ onLogout, isAuthenticated }) => {
       <div className="nav-logo">
         {isAuthenticated ? <Link to="/">Admin</Link> : <Link to="/">User</Link>}
       </div>
-      <div className={`nav-links ${isOpen ? "open" : ""}`}>
+      <div className="nav-menu">
         <ul>
           <li>
             <Link to="/categories" onClick={toggleNav}>
@@ -26,14 +27,24 @@ const Nav = ({ onLogout, isAuthenticated }) => {
               Items
             </Link>
           </li>
+        </ul>
+      </div>
+
+      <div className={`nav-links ${isOpen ? "open" : ""}`}>
+        <ThemeToggle />
+        <ul>
           <li>
             {isAuthenticated ? (
               <button className="btn logout-item" onClick={onLogout}>
                 Logout
+                <i class="fas fa-sign-out-alt"></i>
               </button>
             ) : (
               <Link to="/login" onClick={toggleNav}>
-                <button className="btn logout-item">Login</button>
+                <button className="btn login-item">
+                  Login
+                  <i class="fas fa-sign-in-alt"></i>
+                </button>
               </Link>
             )}
           </li>

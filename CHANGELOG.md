@@ -1,5 +1,25 @@
 # Changelog
 
+## [0.2.5] - 2025-02-18
+
+### Added
+
+- Implemented a dark mode theme with a toggle button.
+- Created `ThemeContext` to manage theme state globally.
+- Stored user theme preference in `localStorage` for persistence.
+
+### Changed
+
+- Updated styles in `style.css` to support light and dark themes.
+- Modified `Nav` component to include the theme toggle button.
+- Modified CSS to use `:root` for defining light and dark mode styles.
+
+### Enhanced
+
+- Improved user experience by allowing seamless switching between light and dark modes.
+- Optimized CSS for better readability in both themes.
+- Optimized performance by using CSS variables instead of applying multiple class overrides.
+
 ## [0.2.4] - 2025-02-01
 
 ### Changed

@@ -9,6 +9,7 @@ import Categories from "./components/Categories";
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
+import { ThemeProvider } from "./context/ThemeContext";
 import "./App.css";
 
 const App = () => {
@@ -25,38 +26,43 @@ const App = () => {
   };
   return (
     <Router>
-      <div className="dark-mode">
-        {/* Show navigation bar */}
-        <Nav
-          onLogin={isLoggedIn}
-          onLogout={handleLogout}
-          isAuthenticated={isLoggedIn}
-        />
-        {/* Accesible content routes */}
-        <Routes>
-          <Route path="/" element={<ItemList isLoggedIn={isLoggedIn} />} />
-          {isLoggedIn ? (
-            <>
-              <Route path="/categories" element={<Categories />} />
-              <Route
-                path="/items"
-                element={<ItemList isLoggedIn={isLoggedIn} />}
-              />
-              {/* Redirect to /items when logged in */}
-              <Route path="/login" element={<Navigate to="/items" />} />
-            </>
-          ) : (
-            <>
-              <Route path="/categories" element={<Navigate to="/login" />} />
-              <Route
-                path="/items"
-                element={<ItemList isLoggedIn={isLoggedIn} />}
-              />
-              <Route path="/login" element={<Login onLogin={handleLogin} />} />
-            </>
-          )}
-        </Routes>
-      </div>
+      <ThemeProvider>
+        <div>
+          {/* Show navigation bar */}
+          <Nav
+            onLogin={isLoggedIn}
+            onLogout={handleLogout}
+            isAuthenticated={isLoggedIn}
+          />
+          {/* Accesible content routes */}
+          <Routes>
+            <Route path="/" element={<ItemList isLoggedIn={isLoggedIn} />} />
+            {isLoggedIn ? (
+              <>
+                <Route path="/categories" element={<Categories />} />
+                <Route
+                  path="/items"
+                  element={<ItemList isLoggedIn={isLoggedIn} />}
+                />
+                {/* Redirect to /items when logged in */}
+                <Route path="/login" element={<Navigate to="/items" />} />
+              </>
+            ) : (
+              <>
+                <Route path="/categories" element={<Navigate to="/login" />} />
+                <Route
+                  path="/items"
+                  element={<ItemList isLoggedIn={isLoggedIn} />}
+                />
+                <Route
+                  path="/login"
+                  element={<Login onLogin={handleLogin} />}
+                />
+              </>
+            )}
+          </Routes>
+        </div>
+      </ThemeProvider>
     </Router>
   );
 };
