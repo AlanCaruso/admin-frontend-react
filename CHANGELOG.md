@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.2.6] - 2025-02-19
+
+### Fixed
+
+- Corrected inconsistent colors in dark mode for various UI elements.
+- Fixed missing theme adaptation in some components.
+- Removed unnecessary styles that were overriding theme variables.
+
+### Changed
+
+- Refactored styles to improve maintainability and ensure proper theme switching.
+- Adjusted class assignments for better consistency in light and dark mode.
+
+### Enhanced
+
+- Improved overall visual consistency between both themes.
+- Optimized CSS by eliminating redundant rules.
+
 ## [0.2.5] - 2025-02-18
 
 ### Added

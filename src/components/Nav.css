@@ -65,14 +65,9 @@ a:hover {
   cursor: pointer;
 }
 .theme-toggle {
-  background-color: var(--button-bg);
-  color: var(--button-text);
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: 0.3s;
-  border-radius: 5px;
-  font-family: "Poppins", sans-serif;
+  width: 136px;
+  display: flex;
+  justify-content: center;
 }
 
 .theme-toggle:hover {

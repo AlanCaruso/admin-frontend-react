@@ -6,6 +6,7 @@
   --button-text: white;
   --card-bg: #fafeff;
   --item-bg: #fafeff;
+  --button-hover: #fafeff;
 }
 
 /* Dark Mode */
@@ -16,6 +17,7 @@
   --button-text: #fafeff;
   --card-bg: #343843;
   --item-bg: #2a2d36;
+  --button-hover: #fafeff;
 }
 
 body {

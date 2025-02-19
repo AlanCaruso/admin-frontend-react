@@ -40,6 +40,7 @@ li {
 }
 .logout-item:hover {
   background-color: var(--button-bg);
+  color: var(--button-hover);
 }
 .modal {
   position: fixed;
@@ -116,13 +117,15 @@ li {
   display: inline-flex;
   align-items: center;
   gap: 0.5em;
-  padding: 0.5em 1em;
+  padding: 8px 12px;
   border: none;
   border-radius: 5px;
   cursor: pointer;
-  font-size: 1em;
+  font-size: 14px;
   transition: filter 0.1s ease, transform 0.1s ease;
   font-family: "Poppins", sans-serif;
+  background: var(--button-bg);
+  color: var(--button-text);
 }
 
 .btn:hover {
@@ -131,12 +134,12 @@ li {
 
 .edit-item {
   background-color: transparent;
-  color: white;
+  color: var(--text-color);
 }
 
 .delete-item {
   background-color: transparent;
-  color: white;
+  color: var(--text-color);
 }
 .inline-field {
   display: flex;
