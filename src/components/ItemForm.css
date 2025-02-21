@@ -19,25 +19,12 @@
   opacity: 1;
 }
 
-.modal-content {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  width: 90%;
-  max-width: 500px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  text-align: center;
-  position: relative;
-}
-
 .close {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
   font-size: 1.5rem;
   cursor: pointer;
   color: #aaa;
   transition: color 0.2s;
+  line-height: 1;
 }
 
 .close:hover {
@@ -47,6 +34,7 @@
 h2 {
   margin-bottom: 1.5rem;
   font-size: 1.5rem;
+  color: var(--text-color);
 }
 
 form {
@@ -58,7 +46,8 @@ form {
 
 label {
   width: 100%;
-  color: #555;
+  color: var(--text-color);
+  text-align: center;
 }
 
 input[type="text"],
@@ -71,6 +60,7 @@ textarea {
   font-size: 1rem;
   color: #333;
   transition: border-color 0.2s;
+  resize: none;
 }
 
 input[type="text"]:focus,

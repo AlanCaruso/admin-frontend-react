@@ -1,5 +1,31 @@
 # Changelog
 
+## [0.3.0] - 2025-02-20
+
+### Added
+
+- Created `FormModal.js` to unify `ItemForm` and `CategoryForm` into a single reusable modal.
+- Implemented `ItemForm.js` and `CategoryForm.js` as wrappers for `FormModal.js`.
+- Added dynamic field configuration in `FormModal.js`, allowing form reuse for different entities.
+- Enabled category deletion functionality in `CategoryList.js`.
+- Added the ability to create new categories directly from the redesigned category page.
+- Implemented category deletion in the backend, adding the necessary route and controller logic.
+
+### Changed
+
+- Updated `ItemList.js` and `CategoryList.js` to use the new `ItemForm` and `CategoryForm`, removing redundant form logic.
+- Refactored modal handling logic in `ItemList.js` and `CategoryList.js` to use `showModal` and `isNew` state variables.
+- Redesigned the category page for improved layout and usability.
+- Adjusted API calls to dynamically fetch categories when necessary (only for `ItemForm`).
+
+### Fixed
+
+- Improved mobile responsiveness for the menu, modals, and item listings.
+- Fixed layout issues in `ItemList.js` and `CategoryList.js` on smaller screens.
+- Adjusted modal styles to ensure proper centering and spacing on mobile.
+- Tweaked theme styles for better contrast and consistency across light and dark modes.
+- Minor CSS fixes to improve visual alignment and spacing in various components.
+
 ## [0.2.6] - 2025-02-19
 
 ### Fixed

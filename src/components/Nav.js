@@ -35,15 +35,18 @@ const Nav = ({ onLogout, isAuthenticated }) => {
         <ul>
           <li>
             {isAuthenticated ? (
-              <button className="btn logout-item" onClick={onLogout}>
+              <button
+                className="btn btn-outlined logout-item"
+                onClick={onLogout}
+              >
                 Logout
-                <i class="fas fa-sign-out-alt"></i>
+                <i className="fas fa-sign-out-alt"></i>
               </button>
             ) : (
               <Link to="/login" onClick={toggleNav}>
                 <button className="btn login-item">
                   Login
-                  <i class="fas fa-sign-in-alt"></i>
+                  <i className="fas fa-sign-in-alt"></i>
                 </button>
               </Link>
             )}

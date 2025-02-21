@@ -1,103 +1,19 @@
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+import FormModal from "./FormModal";
 import "./ItemForm.css";
 
-const ItemForm = ({
-  isNew,
-  showModal,
-  setShowModal,
-  itemIdToEdit,
-  onItemUpdated,
-}) => {
-  const API = "http://192.168.1.10:5000";
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    category: "",
-  });
-  const [categories, setCategories] = useState([]);
-
-  useEffect(() => {
-    if (!isNew && itemIdToEdit) {
-      axios
-        .get(`${API}/api/items/${itemIdToEdit}`)
-        .then((response) => setFormData(response.data))
-        .catch((error) => console.log("Error fetching item:", error));
-    }
-
-    axios
-      .get(`${API}/api/categories`)
-      .then((response) => setCategories(response.data))
-      .catch((error) => console.log("Error fetching item:", error));
-  }, [isNew, itemIdToEdit]);
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      if (isNew) {
-        await axios.post(`${API}/api/items`, formData);
-      } else {
-        await axios.put(`${API}/api/items/${itemIdToEdit}`, formData);
-      }
-      onItemUpdated(); // Notificar a la lista de ítems que se ha actualizado un ítem
-    } catch (error) {
-      console.error("Error submitting form:", error);
-    }
-  };
-
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
+const ItemForm = (props) => {
   return (
-    <div className={`modal ${showModal ? "show" : "hide"}`}>
-      <div className="modal-content">
-        <span className="close" onClick={() => setShowModal(false)}>
-          &times;
-        </span>
-        <h2>{isNew ? "Add New Item" : "Edit Item"}</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input
-              type="text"
-              name="name"
-              value={formData.name}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label>
-            Description:
-            <textarea
-              name="description"
-              value={formData.description}
-              onChange={handleChange}
-            />
-          </label>
-          <br />
-          <label className="inline-field">
-            Category:
-            <select
-              name="category"
-              value={formData.category}
-              onChange={handleChange}
-            >
-              <option value="">Select a category</option>
-              {categories.map((category) => (
-                <option key={category._id} value={category.name}>
-                  {category.name}
-                </option>
-              ))}
-            </select>
-          </label>
-          <br />
-          <button className="btn update-item" type="submit">
-            {isNew ? "Add Item" : "Update Item"}
-          </button>
-        </form>
-      </div>
-    </div>
+    <FormModal
+      {...props}
+      entity={props.entity}
+      apiEndpoint="/api/items"
+      fields={[
+        { name: "name", label: "Name", type: "text" },
+        { name: "description", label: "Description", type: "textarea" },
+        { name: "category", label: "Category", type: "select" },
+      ]}
+    />
   );
 };
 

@@ -53,14 +53,15 @@ li {
 }
 
 .modal-content {
-  background-color: #fefefe;
+  background-color: var(--card-bg);
   margin: 15% auto;
-  padding: 20px;
+  padding: 13px 13px 20px 20px;
   border: 1px solid #888;
   border-radius: 10px;
   max-width: 600px;
   width: 80%;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  color: var(--text-color);
 }
 
 .close {
@@ -72,7 +73,7 @@ li {
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: var(--text-color);
   text-decoration: none;
   cursor: pointer;
 }
@@ -131,6 +132,14 @@ li {
 .btn:hover {
   transform: scale(1.03);
 }
+.btn-outlined {
+  background: transparent;
+  border: 1px solid var(--button-outlined-color);
+  color: var(--button-outlined-color);
+}
+.btn-outlined:hover {
+  background: var(--button-outlined-hover);
+}
 
 .edit-item {
   background-color: transparent;
@@ -167,6 +176,9 @@ select {
   appearance: none !important;
   padding-right: 1rem !important;
   cursor: pointer;
+}
+.item-actions i {
+  font-size: 16px;
 }
 @media (max-width: 768px) {
   .items-container {

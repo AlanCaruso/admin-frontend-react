@@ -39,7 +39,10 @@ const App = () => {
             <Route path="/" element={<ItemList isLoggedIn={isLoggedIn} />} />
             {isLoggedIn ? (
               <>
-                <Route path="/categories" element={<Categories />} />
+                <Route
+                  path="/categories"
+                  element={<Categories isLoggedIn={isLoggedIn} />}
+                />
                 <Route
                   path="/items"
                   element={<ItemList isLoggedIn={isLoggedIn} />}

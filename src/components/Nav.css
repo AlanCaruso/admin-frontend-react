@@ -20,7 +20,6 @@ a:hover {
 .nav-menu {
   display: flex;
   align-items: center;
-  width: 678px;
 }
 .nav-menu ul {
   list-style: none;
@@ -83,13 +82,13 @@ a:hover {
     top: 70px;
     left: 0;
     padding-left: 15px;
-    background-color: #f8f9fa;
+    background-color: var(--bg-color);
   }
 
   .nav-links.open {
     display: flex;
     align-items: start;
-    box-shadow: -8px 29px 28px #d3d3d37d;
+    box-shadow: -8px 29px 28px var(--bg-color);
   }
 
   .nav-links ul {
@@ -102,6 +101,6 @@ a:hover {
 
   .nav-toggle {
     display: block;
-    color: rgba(0, 0, 0, 0.9);
+    color: var(--text-color);
   }
 }

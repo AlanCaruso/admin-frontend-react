@@ -7,6 +7,8 @@
   --card-bg: #fafeff;
   --item-bg: #fafeff;
   --button-hover: #fafeff;
+  --button-outlined-color: black;
+  --button-outlined-hover: black;
 }
 
 /* Dark Mode */
@@ -18,6 +20,8 @@
   --card-bg: #343843;
   --item-bg: #2a2d36;
   --button-hover: #fafeff;
+  --button-outlined-color: #fafeff;
+  --button-outlined-hover: #b3b3b380;
 }
 
 body {

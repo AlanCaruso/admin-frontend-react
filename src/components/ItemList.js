@@ -11,7 +11,7 @@ const ItemList = ({ isLoggedIn }) => {
 
   useEffect(() => {
     fetchItems();
-  }, []);
+  }, [showModal]);
 
   const fetchItems = () => {
     getItems()
@@ -27,7 +27,6 @@ const ItemList = ({ isLoggedIn }) => {
 
   const handleAddNewItem = () => {
     setIsNew(true);
-    setItemIdToEdit(null);
     setShowModal(true);
   };
 
@@ -35,11 +34,6 @@ const ItemList = ({ isLoggedIn }) => {
     setIsNew(false);
     setItemIdToEdit(id);
     setShowModal(true);
-  };
-
-  const handleItemUpdated = () => {
-    fetchItems();
-    setShowModal(false);
   };
 
   return (
@@ -67,7 +61,7 @@ const ItemList = ({ isLoggedIn }) => {
                     className="btn edit-item"
                     onClick={() => handleEditItem(item._id)}
                   >
-                    <i class="far fa-edit"></i>
+                    <i className="far fa-edit"></i>
                   </button>
                   <button
                     className="btn delete-item"
@@ -87,7 +81,10 @@ const ItemList = ({ isLoggedIn }) => {
             showModal={showModal}
             setShowModal={setShowModal}
             itemIdToEdit={itemIdToEdit}
-            onItemUpdated={handleItemUpdated}
+            entity="item"
+            onItemCreated={() =>
+              console.log(`${isNew ? "Created" : "Updated"} item`)
+            }
           />
         )}
       </div>
