@@ -1,5 +1,11 @@
 # Changelog
 
+### [0.4.1] - 2025-02-26
+
+#### Fixed
+
+- Fixed theme initialization in `ThemeContext`. Now, if no theme is saved in `localStorage`, the default theme will be "light," and the theme toggle button will work correctly from the start.
+
 ## [0.4.0] - 2025-02-26
 
 ### Added
