@@ -1,5 +1,27 @@
 # Changelog
 
+## [0.4.0] - 2025-02-26
+
+### Added
+
+- Implemented search bar in `ItemList.js`, allowing users to search items by name or description.
+- Added support for filtering by category and creation date in the frontend.
+- Integrated `useEffect` to update filtered items in real-time.
+- Implemented `populate("category")` in the API to return full category information in `GET /items`.
+
+### Changed
+
+- Fixed category comparison logic in `ItemList.js`, ensuring the `item` ID matches the selected category.
+- Optimized filtering in the frontend to avoid unnecessary re-renders.
+- Adjusted category display in the item list to show the name instead of the ID.
+- Improved backend search using regular expressions (`$regex`) for greater flexibility.
+
+### Fixed
+
+- Resolved issue where `items` were not displaying their categories correctly in the list.
+- Adjusted API responses to correctly include filtered data.
+- Fixed item filtering by category in the API.
+
 ## [0.3.0] - 2025-02-20
 
 ### Added

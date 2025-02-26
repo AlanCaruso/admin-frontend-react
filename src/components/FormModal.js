@@ -21,19 +21,28 @@ const FormModal = ({
     if (!isNew && itemIdToEdit) {
       axios
         .get(`${API}${apiEndpoint}/${itemIdToEdit}`)
-        .then((response) => setFormData(response.data))
+        .then((response) => {
+          setFormData({
+            ...response.data,
+            category: response.data.category ? response.data.category._id : "",
+          });
+        })
         .catch((error) => console.log(`"Error fetching ${entity}:"`, error));
     }
     if (entity === "item") {
       axios
         .get(`${API}/api/categories`)
-        .then((response) => setCategories(response.data))
+        .then((response) => {
+          setCategories(response.data);
+        })
+
         .catch((error) => console.log("Error fetching categories:", error));
     }
-  }, [isNew, itemIdToEdit]);
+  }, [isNew, itemIdToEdit, apiEndpoint, entity]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     try {
       if (isNew) {
         await axios.post(`${API}${apiEndpoint}`, formData);
@@ -75,7 +84,7 @@ const FormModal = ({
                 >
                   <option value="">Select a {field.label.toLowerCase()}</option>
                   {categories.map((category) => (
-                    <option key={category._id} value={category.name}>
+                    <option key={category._id} value={category._id}>
                       {category.name}
                     </option>
                   ))}

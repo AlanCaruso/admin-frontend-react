@@ -107,6 +107,13 @@ li {
 .item-category {
   font-size: 0.9em;
   margin: 10px 0 0 0;
+  border: 1px solid white;
+  border-radius: 15px;
+  display: flex;
+  width: 137px;
+  padding: 2px;
+  align-items: center;
+  justify-content: center;
 }
 
 .item-actions {
@@ -179,6 +186,24 @@ select {
 }
 .item-actions i {
   font-size: 16px;
+}
+.searchbar {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.searchbar input {
+  width: 100%;
+  font-family: "Poppins", sans-serif;
+  padding: 7px;
+}
+.search-filters {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+.search-filters select {
+  width: 27%;
 }
 @media (max-width: 768px) {
   .items-container {

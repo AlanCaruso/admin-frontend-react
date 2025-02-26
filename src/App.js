@@ -5,7 +5,7 @@ import {
   Routes,
   Navigate,
 } from "react-router-dom";
-import Categories from "./components/Categories";
+import CategoriesList from "./components/CategoriesList";
 import ItemList from "./components/ItemList";
 import Nav from "./components/Nav";
 import Login from "./components/Login";
@@ -41,7 +41,7 @@ const App = () => {
               <>
                 <Route
                   path="/categories"
-                  element={<Categories isLoggedIn={isLoggedIn} />}
+                  element={<CategoriesList isLoggedIn={isLoggedIn} />}
                 />
                 <Route
                   path="/items"

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CategoryForm from "./CategoryForm";
 
-const Categories = (isLoggedIn) => {
+const CategoriesList = (isLoggedIn) => {
   const [categories, setCategories] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [isNew, setIsNew] = useState(false);
@@ -70,4 +70,4 @@ const Categories = (isLoggedIn) => {
   );
 };
 
-export default Categories;
+export default CategoriesList;

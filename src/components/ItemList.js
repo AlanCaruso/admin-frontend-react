@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getItems, deleteItem } from "../services/itemService";
+import axios from "axios";
 import ItemForm from "./ItemForm";
 import "../components/style.css";
 
@@ -8,14 +9,49 @@ const ItemList = ({ isLoggedIn }) => {
   const [showModal, setShowModal] = useState(false);
   const [isNew, setIsNew] = useState(true);
   const [itemIdToEdit, setItemIdToEdit] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [categories, setCategories] = useState([]);
+  const [filteredItems, setFilteredItems] = useState([]);
+
+  const API_URL = "http://192.168.1.10:5000/api/categories";
+
+  useEffect(() => {
+    axios
+      .get(API_URL)
+      .then((response) => setCategories(response.data))
+      .catch((error) => console.log("error fetching categories", error));
+  }, []);
 
   useEffect(() => {
     fetchItems();
   }, [showModal]);
 
+  useEffect(() => {
+    setFilteredItems(
+      items
+        .filter((item) =>
+          item.name.toLowerCase().includes(searchTerm.toLowerCase())
+        )
+        .filter((item) =>
+          selectedCategory
+            ? item.category?._id === selectedCategory ||
+              item.category === selectedCategory
+            : true
+        )
+    );
+  }, [searchTerm, selectedCategory, items]);
+
+  useEffect(() => {
+    console.log("Filtered items updated:", filteredItems);
+  }, [filteredItems]);
+
   const fetchItems = () => {
     getItems()
-      .then((response) => setItems(response.data))
+      .then((response) => {
+        setItems(response.data);
+      })
+
       .catch((error) => console.error("Error fetching items:", error));
   };
 
@@ -38,6 +74,28 @@ const ItemList = ({ isLoggedIn }) => {
 
   return (
     <div className="items-container">
+      <div className="search-filters">
+        <div className="searchbar">
+          <input
+            type="text"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="search-input"
+          />
+        </div>
+        <select
+          value={selectedCategory}
+          onChange={(e) => setSelectedCategory(e.target.value)}
+        >
+          <option value="">Todas las categorías</option>
+          {categories.map((category) => (
+            <option key={category._id} value={category._id}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className="add-item-container">
         <h1>Items</h1>
         {isLoggedIn && (
@@ -49,11 +107,13 @@ const ItemList = ({ isLoggedIn }) => {
       </div>
       <div className="items-list-container">
         <ul className="items-list">
-          {items.map((item) => (
-            <li key={item._id} className="item">
+          {filteredItems.map((item) => (
+            <li key={item._id} item={item} className="item">
               <div className="item-content">
                 <span>{item.name}</span>
-                <p className="item-category">{item.category}</p>
+                <p className="item-category">
+                  {item.category ? item.category.name : "No category"}
+                </p>
               </div>
               {isLoggedIn && (
                 <div className="item-actions">
